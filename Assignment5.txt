@@ -1,0 +1,113 @@
+/******************************************************************************
+ * AUTHOR     : Chris Burrell
+ * STUDENT ID : 1009369,
+ * ASSIGNMENT : #5 New Salary
+ * CLASS      : CS1A
+ * SECTION    : MW: 8am
+ * DUE DATE   : 3/14/18
+ *****************************************************************************/
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+/******************************************************************************
+ * Title and overall description of the project
+ * ----------------------------------------------------------------------------
+ * This program will read in the user's name, current salary, and pay increase,
+ * and will output the user's new annual salary, new monthly salary, and
+ * retroactive pay.
+ * ----------------------------------------------------------------------------
+ * INPUT:
+ * 		<The user's name, current salary, pay increase >
+ *
+ * OUTPUT:
+ * 		<The user's name, new salary, new monthly salary, and retroactive pay >
+ *****************************************************************************/
+
+int main()
+{
+
+	/**************************************************************************
+	 * CONSTANTS
+	 * ------------------------------------------------------------------------
+	 * OUTPUT - USED FOR CLASS HEADING
+	 *-------------------------------------------------------------------------
+	 *PROGRAMMER[] : Programmer's Name
+	 *CLASS[]      : Student's Course
+	 *SECTION[]    : Class Days and Times
+	 *LAB_NUM      : Lab Number (specific to this Lab / Assignment)
+	 *LAB_NAME[]   : Title of the Lab / Assignment
+	 *************************************************************************/
+
+
+	const char PROGRAMMER[]       = "Chris Burrell";
+	const char CLASS[]            = "CS1A";
+	const char 	SECTION[]         = "MW: 8:00 am";
+	const int ASSIGNM_NUM         = 5;
+	const char ASSIGNM_NAME[]     = "New Salary";
+
+	char name[20];
+	float currentSalary;
+	float payIncrease;
+	float newAnnualsalary;
+	float newMonthlysalary;
+	float retroPay;
+
+
+	//OUTPUT the class heading
+	cout << left;
+	cout << "***********************************************************\n";
+	cout << "*  PROGRAMMED BY : " << PROGRAMMER << endl;
+	cout << "*  "     << setw(14) << "CLASS"    << ": " << CLASS    << endl;
+	cout << "*  "     << setw(14) << "SECTION"  << ": " << SECTION  << endl;
+	cout << "*  ASSIGN #"<< setw(6) << ASSIGNM_NUM<< ": "<< ASSIGNM_NAME;
+	cout << endl;
+	cout << "************************************************************\n\n";
+	cout << right;
+
+
+	/**************************************************************************
+	 	 * INPUT - reads in the user's name as well as their current salary
+	 	 * and pay increase.
+	 *************************************************************************/
+	cout << left;
+	cout << setw(30) << "What is your name?";
+	cin.getline(name, 20);
+
+
+
+	cout << setw(30) << "What is your current salary?";
+	cin >> currentSalary;
+	cin.ignore(10000,'\n');
+
+	cout << setw(30) << "What is your pay increase?";
+	cin >> payIncrease;
+	cin.ignore(10000,'\n');
+
+
+	/**************************************************************************
+	 	 * PROCESSING - Calculates the values for New salary, Monthly salary,
+	 	 * and Retroactive pay.
+	 *************************************************************************/
+
+	newAnnualsalary = currentSalary * payIncrease + currentSalary;
+	newMonthlysalary = newAnnualsalary / 12;
+	retroPay = (newAnnualsalary - currentSalary) / 12 * 6;
+
+	/**************************************************************************
+	 	 * OUTPUT - outputs the user's salary information which includes:
+	 	 * New salary, Monthly salary, and Retroactive pay.
+	 *************************************************************************/
+	cout << endl;
+	cout << name << "'s" << " SALARY INFORMATION" << endl;
+	cout << right;
+	cout << setw(10) << "New Salary" << setw(19) << "Monthly Salary";
+	cout << setw(20) << "Retroactive Pay" << endl;
+	cout << setprecision(2) << fixed;
+	cout << setw(10) << newAnnualsalary << setw(19) << newMonthlysalary;
+	cout << setw(20) << retroPay;
+
+
+	return 0;
+}
